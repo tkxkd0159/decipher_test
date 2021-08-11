@@ -16,18 +16,20 @@
         <h1 id="query-test">Query Test</h1>
         <p>클라이언트 프로그램을 통해 블록체인 메인넷 정보를 받아오거나 다른 노드와 상호작용을 하기 위해서는 쿼리하는 것이 필요합니다.<br>따라서 해당 test는 조건에 맞게 간단한 REST API 및 JSON-RPC 요청을 날릴 수 있는지에 대한 검증을 진행합니다.</p>
         <p>1) <u>http://flask-decipher-test.eba-iya5hnpv.ap-northeast-2.elasticbeanstalk.com/api/seed</u> 로 POST 요청<br>아래 양식의 JSON 형태로 해당 엔드포인트로 POST 요청을 보내주시고 리턴되는 시드 값을 저장해주세요.<br>이 때 이름, 나이를 본인의 정보에 맞게 채워넣어 주세요.</p>
-        <pre><code class="lang-json">{
+        <pre><code class="lang-json">
+{
             <span class="hljs-attribute">name</span>: <span class="hljs-string">"SatoshiNakamoto"</span>,
             age: <span class="hljs-number">20</span>
-        }
+}
         </code></pre>
         <p>2) <u>http://flask-decipher-test.eba-iya5hnpv.ap-northeast-2.elasticbeanstalk.com/api</u> 로 JSON-RPC Request 보내기<br>1)에서 얻은 <code>seed</code> 값을 <code>name</code>, <code>age</code>값과 함께 채워넣고 아래 양식으로 해당 엔드포인트로 JSON-RPC request를 보내주세요. 이 때 성공메세지와 함께 특정 숫자가 반환되면 이를 지원서에 적어주시면 됩니다.</p>
-        <pre><code class="lang-json">{
+        <pre><code class="lang-json">
+{
             <span class="hljs-attr">"jsonrpc"</span>: <span class="hljs-string">"2.0"</span>,
             <span class="hljs-attr">"method"</span>: <span class="hljs-string">"genUniqueID"</span>,
             <span class="hljs-attr">"params"</span>: {<span class="hljs-attr">"name"</span>: <span class="hljs-string">"SatoshiNakamoto"</span>, <span class="hljs-attr">"age"</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">"seed"</span>: <span class="hljs-string">"&lt;hex_str&gt;"</span>},
             <span class="hljs-attr">"id"</span>: <span class="hljs-number">202108</span>
-        }
+}
         </code></pre>
         <p>Example response</p>
         <pre><code>{<span class="hljs-attr">"id"</span>:<span class="hljs-number">202108</span>,<span class="hljs-attr">"jsonrpc"</span>:<span class="hljs-string">"2.0"</span>,<span class="hljs-attr">"result"</span>:<span class="hljs-string">"Success!!! Your ID : 116980bd32321260_1628661963"</span>}
