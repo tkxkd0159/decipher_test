@@ -2,14 +2,14 @@ from flask import Flask, render_template, request
 from flask_jsonrpc import JSONRPC
 from lib import checkName, makeSeed, makeUniqueID
 
-app = Flask(__name__)
-rpc = JSONRPC(app, '/api', enable_web_browsable_api=True)
+application = Flask(__name__)
+rpc = JSONRPC(application, '/api', enable_web_browsable_api=True)
 
-@app.route("/")
+@application.route("/")
 def index():
     return render_template('index.html')
 
-@app.route("/api/seed", methods=['POST'])
+@application.route("/api/seed", methods=['POST'])
 def getSeed() -> str:
     req = request
     if req.headers['Content-Type'] == "application/json":
@@ -38,4 +38,4 @@ def getID(name: str, age: int, seed: str) -> str:
 
 
 if __name__ == "__main__":
-    app.run()
+    application.run()
